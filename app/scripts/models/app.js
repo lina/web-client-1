@@ -10,6 +10,7 @@ app.Models = app.Models || {};
     url: '',
 
     initialize: function() {
+      this.set('org', 'Adequate Design Studios');
     },
 
     defaults: {

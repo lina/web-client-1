@@ -9,11 +9,7 @@ app.Views = app.Views || {};
 
     template: JST['app/scripts/templates/app.ejs'],
 
-    tagName: 'div',
-
     id: 'app',
-
-    className: '',
 
     events: {},
 
@@ -23,7 +19,13 @@ app.Views = app.Views || {};
     },
 
     render: function () {
-      this.$el.html(this.template(this.model.toJSON()));
+      this.$el.html(this.template({
+        data: this.model.toJSON(),
+        partials: {
+          header: new app.Views.Header({ model: this.model }).render().html(),
+          footer: new app.Views.Footer({ model: this.model }).render().html()
+        }
+      }));
       return this.$el;
     }
 
