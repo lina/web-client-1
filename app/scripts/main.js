@@ -14,5 +14,6 @@ window.app = {
 };
 
 $(document).ready(function (){
+  $(document).foundation();
   app.init();
 });

@@ -1,0 +1,60 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,300italic);
+
+/***************/
+/* Project CSS */
+/***************/
+
+body {
+  font-family: "Lato", sans-serif;
+/*  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  overflow: hidden;*/
+}
+
+a {
+  text-decoration: none;
+  color: #FF6565;
+  }
+  a:hover {
+    color: #F40A0A;
+    text-decoration: underline;
+  }
+
+:focus{
+  outline-color: #FFA3A3;
+}
+
+
+header {
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 48px;
+  background-color: #FF4D4D;
+  color: #fafafa;
+  font-weight: 200;
+  }
+  header .title,
+  header .menu{
+    font-size: 20px;
+    padding: 12px 0;
+  }
+  header .title {
+    float: left;
+    letter-spacing: 4px;
+  }
+  header .title em {
+    font-style: italic;
+    color: #FFC6C6; 
+    font-size: 12px;
+    letter-spacing: 0;
+  }
+  header .menu {
+    float: right;
+    list-style: none;
+    letter-spacing: 1px;
+  }
+  header .menu li {
+    float: left;
+    padding-left:12px;
+  }
