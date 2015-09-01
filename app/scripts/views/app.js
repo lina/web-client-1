@@ -16,15 +16,11 @@ app.Views = app.Views || {};
     initialize: function (){
       $('body').append(new app.Views.Header({ model: this.model }).render());
       $('body').append(this.render());
+      $('body').append(new app.Views.Footer({ model: this.model }).render());
     },
 
     render: function () {
-      this.$el.html(this.template({
-        data: this.model.toJSON(),
-        partials: {
-          footer: new app.Views.Footer({ model: this.model }).render().prop('outerHTML')
-        }
-      }));
+      this.$el.html( this.template(this.model.toJSON()) );
       return this.$el;
     }
 
