@@ -25,6 +25,11 @@ body {
 .animate {
   transition: all 0.2s;
 }
+.keyline-left { border-left: 1px solid #CCC; }
+.keyline-right { border-right: 1px solid #CCC; }
+.keyline-top { border-top: 1px solid #CCC; }
+.keyline-bottom { border-bottom: 1px solid #CCC; }
+.keyline-all { border: 1px solid #CCC; }
 
 
 /*******************/
@@ -32,10 +37,10 @@ body {
 /*******************/
 a {
   text-decoration: none;
-  color: #FF6565;
+  color: #888;
   }
   a:hover {
-    color: #F40A0A;
+    color: #333;
     text-decoration: underline;
   }
 
@@ -139,8 +144,14 @@ footer {
   border-top: 1px solid #CCC;
   z-index: 1;
   opacity: 0.6;
-}
-footer:hover {
-  opacity: 1;
-
-}
+  }
+  footer li { opacity: 0; }
+  footer:hover {
+    opacity: 1;
+    font-size: 1.2rem;
+    padding: 1rem;
+  }
+  footer:hover ul {
+    margin: 30px 0; /* v-align center hack -- this should be improved */
+  }
+  footer:hover li { opacity: 1; }
