@@ -7,7 +7,6 @@ body {
   top: 0;
   bottom: 0;
   width: 100%;
-  overflow: hidden;
 }
 
 
@@ -62,7 +61,7 @@ h1,h2,h3 {
 /***************/
 
 header {
-  position: absolute;
+  position: fixed;
   top: 0;
   width: 100%;
   border-bottom: 1px solid #ccc;
@@ -112,7 +111,7 @@ header {
   }
 
 #app {
-  position: absolute;
+  position: fixed;
   width: 100%;
   top: 0;
   bottom: 0;
@@ -124,7 +123,7 @@ header {
 }
 
 .page-container {
-  position: absolute;
+  position: fixed;
   width: 100%;
   }
   .page {
@@ -135,7 +134,7 @@ header {
   }
 
 footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   background-color: #EEE;

@@ -9,11 +9,11 @@ haunt.Views = haunt.Views || {};
 
     template: JST['app/scripts/templates/app.ejs'],
 
-    templatePage1: JST['app/scripts/templates/pages/page1.ejs'],
-
-    templatePage2: JST['app/scripts/templates/pages/page2.ejs'],
-
-    templatePage3: JST['app/scripts/templates/pages/page3.ejs'],
+    pageTemplates: [
+      JST['app/scripts/templates/pages/page1.ejs'],
+      JST['app/scripts/templates/pages/page2.ejs'],
+      JST['app/scripts/templates/pages/page3.ejs'],
+    ],
 
     id: 'app',
 
@@ -27,24 +27,28 @@ haunt.Views = haunt.Views || {};
       $('body').append(this.render());
       $('body').append(this.footerView.render());
       
-      this.computeSize();
+      this.calculateSize();
+      $(window).on('resize', this.calculateSize.bind(this));
+      $('body').on('scroll', function(e){ console.log(e); });
     },
 
-    computeSize: function(){
+    calculateSize: function(){
+      var headerHeight = this.headerView.$el.outerHeight(),
+          footerHeight = this.footerView.$el.outerHeight(),
+          pageHeight = $(window).outerHeight() - headerHeight - footerHeight;
+
       this.$el.find('.page-container').css({
-        top: this.headerView.$el.outerHeight(),
-        bottom: this.footerView.$el.outerHeight()
+        top: headerHeight,
+        bottom: footerHeight
       });
+
+      $('body').css({ 'height': pageHeight * this.pageTemplates.length });
     },
 
     render: function () {
       this.$el.html( this.template({
         data: this.model.toJSON(),
-        pages: [
-          this.templatePage1(),
-          this.templatePage2(),
-          this.templatePage3(),
-        ]
+        pages: this.pageTemplates
       }) );
       return this.$el;
     }
