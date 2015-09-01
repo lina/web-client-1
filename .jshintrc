@@ -17,7 +17,7 @@
     "strict": true,
     "jquery": true,
     "globals": {
-        "BbWebClient": true,
+        "haunt": true,
         "bbwebclient": true,
         "_": false,
         "Backbone": false,

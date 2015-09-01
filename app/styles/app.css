@@ -6,11 +6,11 @@
 
 body {
   font-family: "Lato", sans-serif;
-/*  position: absolute;
+  position: absolute;
   top: 0;
   bottom: 0;
   width: 100%;
-  overflow: hidden;*/
+  overflow: hidden;
 }
 
 a {
@@ -28,8 +28,10 @@ a {
 
 
 header {
+  position: absolute;
+  top: 0;
+  width: 100%;
   border-bottom: 1px solid #ccc;
-  margin-bottom: 48px;
   background-color: #FF4D4D;
   color: #fafafa;
   font-weight: 200;
@@ -62,3 +64,19 @@ header {
   header .menu li a {
     color: #FFF;
   }
+
+#app {
+  position: absolute;
+  width: 100%;
+  /* top and bottom set dynamically */
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #EEE;
+  font-size: 0.6rem;
+  padding: 4px 0;
+  border-top: 1px solid #CCC;
+}

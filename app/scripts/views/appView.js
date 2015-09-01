@@ -14,9 +14,22 @@ haunt.Views = haunt.Views || {};
     events: {},
 
     initialize: function (){
-      $('body').append(new haunt.Views.HeaderView({ model: this.model }).render());
+      this.headerView = new haunt.Views.HeaderView({ model: this.model });
+      this.footerView = new haunt.Views.FooterView({ model: this.model });
+      
+      $('body').append(this.headerView.render());
       $('body').append(this.render());
-      $('body').append(new haunt.Views.FooterView({ model: this.model }).render());
+      $('body').append(this.footerView.render());
+      
+      this.computeSize();
+    },
+
+    computeSize: function(){
+      this.$el.css({
+        top: this.headerView.$el.outerHeight(),
+        bottom: this.footerView.$el.outerHeight()
+      });
+
     },
 
     render: function () {
