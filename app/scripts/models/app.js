@@ -11,6 +11,7 @@ app.Models = app.Models || {};
 
     initialize: function() {
       this.set('org', 'Adequate Design Studios');
+      this.set('user', 'asdfasdf')
     },
 
     defaults: {
