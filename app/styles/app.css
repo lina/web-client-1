@@ -36,10 +36,12 @@ header {
   }
   header .title,
   header .menu{
-    font-size: 20px;
-    padding: 12px 0;
+    padding: 1rem 0;
+    margin: 0;
+    line-height: 1rem;
   }
   header .title {
+    font-size: 1.4rem;
     float: left;
     letter-spacing: 4px;
   }
@@ -51,10 +53,12 @@ header {
   }
   header .menu {
     float: right;
-    list-style: none;
     letter-spacing: 1px;
   }
   header .menu li {
     float: left;
     padding-left:12px;
+  }
+  header .menu li a {
+    color: #FFF;
   }
