@@ -1,4 +1,4 @@
-/*global BbWebClient, $*/
+/*global haunt, $*/
 
 
 window.haunt = {
@@ -14,6 +14,7 @@ window.haunt = {
 };
 
 $(document).ready(function (){
+  'use strict';
   $(document).foundation();
   haunt.init();
 });

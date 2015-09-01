@@ -11,7 +11,7 @@ haunt.Models = haunt.Models || {};
 
     initialize: function() {
       this.set('org', 'Adequate Design Studios');
-      this.set('user', 'Terence Mckenna')
+      this.set('user', 'Terence Mckenna');
     },
 
     defaults: {
