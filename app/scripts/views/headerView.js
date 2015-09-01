@@ -11,6 +11,8 @@ haunt.Views = haunt.Views || {};
 
     tagName: 'header',
 
+    className: 'animate',
+
     events: {},
 
     initialize: function () {

@@ -11,6 +11,8 @@ haunt.Views = haunt.Views || {};
 
     tagName: 'footer',
 
+    className: 'animate',
+
     events: {},
 
     initialize: function () {
