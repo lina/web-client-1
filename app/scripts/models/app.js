@@ -12,6 +12,11 @@ haunt.Models = haunt.Models || {};
     initialize: function() {
       this.set('org', 'Adequate Design Studios');
       this.set('user', 'Terence Mckenna');
+      this.set('currentPage', 0);
+
+      this.on('pageUp pageDown skipPage', function(pageIdx){
+        this.set('currentPage', pageIdx);
+      });
     },
 
     defaults: {
