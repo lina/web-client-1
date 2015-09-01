@@ -137,6 +137,7 @@ footer {
   position: fixed;
   bottom: 0;
   width: 100%;
+  height: 62px;
   background-color: #EEE;
   font-size: 0.6rem;
   padding: 4px 0;
@@ -144,13 +145,22 @@ footer {
   z-index: 1;
   opacity: 0.6;
   }
-  footer li { opacity: 0; }
+  footer .row {
+    height: 100%;
+  }
+  footer .columns {
+    /* v-align-center */
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  footer ul { opacity: 0; }
   footer:hover {
     opacity: 1;
-    font-size: 1.2rem;
-    padding: 1rem;
+    height: 94px;
   }
   footer:hover ul {
-    margin: 30px 0; /* v-align center hack -- this should be improved */
+    margin-bottom: 0;
+    opacity: 1;
   }
-  footer:hover li { opacity: 1; }
+  /*footer:hover li { opacity: 1; }*/
