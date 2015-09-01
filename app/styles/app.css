@@ -97,6 +97,9 @@ header {
   bottom: 0;
   z-index: 0;
   background-color: #FAFAFA;
+  background-image: url('../images/alberto-korda.jpg');
+  background-size: cover;
+  background-position: 50% 14%;
 }
 
 .page-container {
