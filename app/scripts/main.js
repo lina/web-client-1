@@ -1,19 +1,19 @@
 /*global BbWebClient, $*/
 
 
-window.app = {
+window.haunt = {
   Models: {},
   Collections: {},
   Views: {},
   Routers: {},
   init: function () {
     'use strict';
-    this.appModel = new this.Models.App();
-    this.appView = new this.Views.App({ model: this.appModel });
+    this.app = new this.Models.App();
+    this.appView = new this.Views.AppView({ model: this.app });
   }
 };
 
 $(document).ready(function (){
   $(document).foundation();
-  app.init();
+  haunt.init();
 });

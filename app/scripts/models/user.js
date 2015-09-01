@@ -1,11 +1,11 @@
-/*global app, Backbone*/
+/*global haunt, Backbone*/
 
-app.Models = app.Models || {};
+haunt.Models = haunt.Models || {};
 
 (function () {
   'use strict';
 
-  app.Models.User = Backbone.Model.extend({
+  haunt.Models.User = Backbone.Model.extend({
 
     url: '',
 

@@ -1,11 +1,11 @@
-/*global app, Backbone, JST*/
+/*global haunt, Backbone, JST*/
 
-app.Views = app.Views || {};
+haunt.Views = haunt.Views || {};
 
 (function () {
   'use strict';
 
-  app.Views.Footer = Backbone.View.extend({
+  haunt.Views.FooterView = Backbone.View.extend({
 
     template: JST['app/scripts/templates/footer.ejs'],
 
