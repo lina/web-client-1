@@ -1,9 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,300italic);
 
-/***************/
-/* Project CSS */
-/***************/
-
 body {
   font-family: "Lato", sans-serif;
   position: absolute;
@@ -13,6 +9,10 @@ body {
   overflow: hidden;
 }
 
+
+/*******************/
+/* Inline Elements */
+/*******************/
 a {
   text-decoration: none;
   color: #FF6565;
@@ -27,14 +27,38 @@ a {
 }
 
 
+/*******************/
+/* Block Elements */
+/*******************/
+h1,h2,h3 {
+  font-weight: 200;
+}
+
+/*******************/
+/* Helpers */
+/*******************/
+.v-align-center {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.v-height-full {
+  height: 100%;
+}
+
+/***************/
+/* Project CSS */
+/***************/
+
 header {
   position: absolute;
   top: 0;
   width: 100%;
   border-bottom: 1px solid #ccc;
-  background-color: #FF4D4D;
-  color: #fafafa;
+  background-color: #FFF;
+  color: #333;
   font-weight: 200;
+  z-index: 1;
   }
   header .title,
   header .menu{
@@ -62,14 +86,28 @@ header {
     padding-left:12px;
   }
   header .menu li a {
-    color: #FFF;
+    color: #333;
   }
 
 #app {
   position: absolute;
   width: 100%;
-  /* top and bottom set dynamically */
+  top: 0;
+  bottom: 0;
+  z-index: 0;
+  background-color: #FAFAFA;
 }
+
+.page-container {
+  position: absolute;
+  width: 100%;
+  }
+  .page {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+  }
 
 footer {
   position: absolute;
@@ -79,4 +117,5 @@ footer {
   font-size: 0.6rem;
   padding: 4px 0;
   border-top: 1px solid #CCC;
+  z-index: 1;
 }

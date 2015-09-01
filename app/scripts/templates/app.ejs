@@ -1,5 +1,10 @@
-<div class="row">
-  <div class="columns col12">
-    <h2 class="text-center">Big Data for Lonely People</h2>
-  </div>
+<div class="page-container">
+  <% for(var i=0; i<pages.length; i++){ %>
+    <div class="page v-height-full">
+      <div class="row v-height-full">
+        <%= pages[i] %>
+      </div>
+    </div>
+  <% } %>
 </div>
+
