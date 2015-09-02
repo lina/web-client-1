@@ -9,7 +9,7 @@ haunt.Views = haunt.Views || {};
 
     events: {},
 
-    className: 'page animate',
+    className: 'page',
 
     initialize: function () {
       this.$el.addClass('pageNumber-' + this.model.get('pageNumber'))
@@ -22,7 +22,11 @@ haunt.Views = haunt.Views || {};
     },
 
     hide: function() {
-      this.$el.removeClass('active');
+      // hack to account for previous slide transitioning out.  must match the .page transition time
+        // could be improved
+      setTimeout(function(){
+        this.$el.removeClass('active');
+      }.bind(this), 600)
     },
 
     render: function () {
