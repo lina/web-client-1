@@ -38,9 +38,9 @@ haunt.Views = haunt.Views || {};
       }, this);
 
       this.calculateSize();
+
       $(window).on('resize', this.calculateSize.bind(this));
       $(window).on('scroll', _.throttle(this.pageScroll.bind(this), 100));
-
       this.listenTo(this.model, 'change:currentPage', this.changePage);
       
     },
@@ -65,13 +65,20 @@ haunt.Views = haunt.Views || {};
     },
 
     changePage: function(app){
+      var pageNumber = app.get('currentPage');
       this.model.pages.each(function(page){
-        if(page.get('pageNumber') === app.get('currentPage')){
+        if(page.get('pageNumber') === pageNumber){
           page.trigger('show');
         }else{
           page.trigger('hide');
         }
       });
+
+      if(pageNumber > 0){
+        this.model.trigger('showHeader');
+      }else{
+        this.model.trigger('hideHeader');
+      }
     },
 
     pageScroll: function(e){

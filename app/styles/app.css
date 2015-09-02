@@ -7,7 +7,7 @@ body {
   top: 0;
   bottom: 0;
   width: 100%;
-  background-color: #CCC;
+  background-color: #FAFAFA;
 }
 
 
@@ -65,23 +65,20 @@ header {
   position: fixed;
   top: 0;
   width: 100%;
-  border-bottom: 1px solid #ccc;
   background-color: transparent;
-  color: #333;
   font-weight: 200;
   z-index: 1;
+  padding: 18px 0;
   }
-  header li { opacity: 0; }
+  header:hover,
   header.active {
-    background-color: rgba(255,255,255,0.8);
-    opacity: 0.8;
-  }
-  header.active li { opacity: 1; }
-  header:hover {
-    background-color: rgba(255,255,255,1);
+    background-color: #FAFAFA;
+    border-bottom: 1px solid #AAA;
     opacity: 1;
   }
-  header:hover li { opacity: 1; }
+  header.active {
+    padding: 0;
+  }
   header .title,
   header .menu{
     padding: 1rem 0;
@@ -89,26 +86,27 @@ header {
     line-height: 1rem;
   }
   header .title {
-    font-size: 1.4rem;
+    font-size: 3rem;
     float: left;
     letter-spacing: 4px;
   }
-  header .title em {
-    font-style: italic;
-    color: #FFC6C6; 
-    font-size: 12px;
-    letter-spacing: 0;
+  header.active .title {
+    font-size: 1.4rem;
   }
   header .menu {
     float: right;
     letter-spacing: 1px;
   }
-  header .menu li {
+  header li {
     float: left;
     padding-left:12px;
   }
-  header .menu li a {
-    color: #333;
+  header li a {
+    color: #FFF;
+  }
+  header.active li a,
+  header:hover li a{ 
+    color: #333 ;
   }
 
 #app {
