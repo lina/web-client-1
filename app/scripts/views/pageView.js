@@ -9,9 +9,10 @@ haunt.Views = haunt.Views || {};
 
     events: {},
 
-    className: "page animate",
+    className: 'page animate',
 
     initialize: function () {
+      this.$el.addClass('pageNumber-' + this.model.get('pageNumber'))
       this.listenTo(this.model, 'show', this.show);
       this.listenTo(this.model, 'hide', this.hide);
     },
