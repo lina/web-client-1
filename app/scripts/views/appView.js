@@ -28,7 +28,10 @@ haunt.Views = haunt.Views || {};
       $('body').append(this.footerView.render());
 
       this.listenTo(this.model, 'change:currentPage', function(app){
-        console.log(app.get('currentPage'));
+        var idx = app.get('currentPage');
+        this.$el.find('.page').removeClass('active');
+        this.$el.find('.page[data-idx="' + idx + '"]').addClass('active');
+        console.log(idx);
       })
       
       this.calculateSize();
@@ -70,18 +73,6 @@ haunt.Views = haunt.Views || {};
         }
       }
     },
-
-    // changePage: function(e){
-    //   // get the index of the breakpoint bucket that pageYOffset falls within
-    //   for(var i=0; i< this.DIMENSIONS.breakPoints.length; i++){
-    //     if(pageYOffset < this.DIMENSIONS.breakPoints[i]){
-    //       if(this.model.get('currentPage') !== i){
-    //         this.model.set('currentPage', i);
-    //       }
-    //       break;
-    //     }
-    //   }
-    // },
 
     render: function () {
       this.$el.html( this.template({
