@@ -27,6 +27,9 @@ haunt.Views = haunt.Views || {};
 
     render: function () {
       this.$el.html(this.template(this.model.toJSON()));
+      this.$el.css({
+        backgroundColor: this.backgroundColor
+      })
       return this.$el;
     }
 

@@ -10,9 +10,26 @@ haunt.Views = haunt.Views || {};
     template: JST['app/scripts/templates/app.ejs'],
 
     pageTemplates: [
-      JST['app/scripts/templates/pages/page1.ejs'],
-      JST['app/scripts/templates/pages/page2.ejs'],
-      JST['app/scripts/templates/pages/page3.ejs'],
+      { 
+        template: JST['app/scripts/templates/pages/page1.ejs'],
+        backgroundColor: '#80DBFF'
+      },
+      { 
+        template: JST['app/scripts/templates/pages/page2.ejs'],
+        backgroundColor: '#FFA10B'
+      },
+      { 
+        template: JST['app/scripts/templates/pages/page3.ejs'],
+        backgroundColor: '#FF5703'
+      },
+      { 
+        template: JST['app/scripts/templates/pages/page4.ejs'],
+        backgroundColor: '#52CC93'
+      },
+      { 
+        template: JST['app/scripts/templates/pages/page5.ejs'],
+        backgroundColor: '#967DB3'
+      },
     ],
 
     id: 'app',
@@ -28,14 +45,7 @@ haunt.Views = haunt.Views || {};
       $('body').append(this.footerView.render());
 
       // build pageModels and pageViews
-      this.pageTemplates.map(function(template, idx){
-        var page = this.model.pages.add({ pageNumber: idx+1 }),
-            pageView = new haunt.Views.Page({ model: page });
-
-        pageView.template = template;
-
-        this.$el.find('.page-container').append(pageView.render());
-      }, this);
+      this.pageTemplates.map(this.generatePage, this);
 
       this.calculateSize();
 
@@ -52,14 +62,11 @@ haunt.Views = haunt.Views || {};
       this.DIMENSIONS.windowHeight = innerHeight; //$(window).outerHeight();
       this.DIMENSIONS.pageHeight = this.DIMENSIONS.windowHeight - this.DIMENSIONS.headerHeight - this.DIMENSIONS.footerHeight;
       this.DIMENSIONS.bodyHeight = this.DIMENSIONS.pageHeight * this.pageTemplates.length;
-      // this.DIMENSIONS.breakPoints = _.range(this.pageTemplates.length + 1, 0, -1).map(function(pageIdx){ 
-      //   return this.DIMENSIONS.bodyHeight / pageIdx;
-      // }, this); 
 
-      this.$el.find('.page-container').css({
-        top: this.DIMENSIONS.headerHeight,
-        bottom: this.DIMENSIONS.footerHeight
-      });
+      // this.$el.find('.page-container').css({
+      //   top: this.DIMENSIONS.headerHeight,
+      //   bottom: this.DIMENSIONS.footerHeight
+      // });
 
       $('body').css({ 'height': this.DIMENSIONS.bodyHeight });
     },
@@ -100,6 +107,15 @@ haunt.Views = haunt.Views || {};
     render: function () {
       this.$el.html( this.template(this.model.toJSON()) );
       return this.$el;
+    },
+
+    generatePage: function(pageData, idx){
+      var page = this.model.pages.add({ pageNumber: idx+1 }),
+          pageView = new haunt.Views.Page({ model: page });
+
+      _.extend(pageView, pageData);
+
+      this.$el.find('.page-container').append(pageView.render());
     }
 
   });

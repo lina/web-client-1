@@ -123,6 +123,8 @@ header {
 
 .page-container {
   position: fixed;
+  top: 0;
+  bottom: 0;
   width: 100%;
   }
   .page {
@@ -131,6 +133,7 @@ header {
     height: 100%;
     opacity: 0;
     z-index: 0;
+    background-color: transparent;
   }
   .page.active {
     opacity: 1;
@@ -138,9 +141,10 @@ header {
   }
   .page h2 { 
     color: #EEE;
-    font-size: 14rem;
-    /*font-weight: 700;*/
-    letter-spacing: 4px;
+    font-size: 16rem;
+    font-weight: 100;
+    letter-spacing: 14px;
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
   }
 
 footer {
