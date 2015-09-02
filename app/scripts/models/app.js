@@ -10,6 +10,7 @@ haunt.Models = haunt.Models || {};
     url: '',
 
     initialize: function() {
+      this.pages = new haunt.Collections.Pages();
       this.set('org', 'Adequate Design Studios');
       this.set('user', 'Terence Mckenna');
       this.set('currentPage', 0);
