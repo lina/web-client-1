@@ -22,11 +22,7 @@ haunt.Views = haunt.Views || {};
     },
 
     hide: function() {
-      // hack to account for previous slide transitioning out.  must match the .page transition time
-        // could be improved
-      setTimeout(function(){
-        this.$el.removeClass('active');
-      }.bind(this), 600)
+      this.$el.removeClass('active');
     },
 
     render: function () {
