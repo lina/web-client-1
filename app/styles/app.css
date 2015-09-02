@@ -170,8 +170,11 @@ footer {
     transform: translateY(-50%);
   }
   footer ul { opacity: 0; }
+  footer.active,
   footer:hover {
     opacity: 1;
+  }
+  footer:hover {
     height: 94px;
   }
   footer:hover ul {

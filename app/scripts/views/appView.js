@@ -83,8 +83,10 @@ haunt.Views = haunt.Views || {};
 
       if(pageNumber > 0){
         this.model.trigger('showHeader');
+        this.model.trigger('showFooter');
       }else{
         this.model.trigger('hideHeader');
+        this.model.trigger('hideFooter');
       }
     },
 
