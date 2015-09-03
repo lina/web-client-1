@@ -45,12 +45,12 @@ haunt.Views = haunt.Views || {};
       $('body').append(this.footerView.render());
 
       // build pageModels and pageViews
-      this.pageTemplates.map(this.generatePage, this);
+      this.pageViews = this.pageTemplates.map(this.generatePage, this);
 
       this.calculateSize();
 
       $(window).on('resize', this.calculateSize.bind(this));
-      $(window).on('scroll', _.throttle(this.pageScroll.bind(this), 100));
+      $(window).on('scroll', _.throttle(this.pageScroll.bind(this), 30));
       this.listenTo(this.model, 'change:currentPage', this.changePage);
       
     },
@@ -60,15 +60,33 @@ haunt.Views = haunt.Views || {};
       this.DIMENSIONS.headerHeight = this.headerView.$el.outerHeight();
       this.DIMENSIONS.footerHeight = this.footerView.$el.outerHeight();
       this.DIMENSIONS.windowHeight = innerHeight; //$(window).outerHeight();
-      this.DIMENSIONS.pageHeight = this.DIMENSIONS.windowHeight - this.DIMENSIONS.headerHeight - this.DIMENSIONS.footerHeight;
-      this.DIMENSIONS.bodyHeight = this.DIMENSIONS.pageHeight * this.pageTemplates.length;
 
-      // this.$el.find('.page-container').css({
-      //   top: this.DIMENSIONS.headerHeight,
-      //   bottom: this.DIMENSIONS.footerHeight
-      // });
+      // page breakpoints at end of each page
+      this.DIMENSIONS.pageEndBreakPoints = this.pageViews.reduce(function(pageEndBreakPoints, pageView, idx){
+        var previousBreakPoint = idx > 0 ? pageEndBreakPoints[idx -1] : 0;
+        return pageEndBreakPoints.concat( previousBreakPoint + pageView.$el.height() );
+      }, []);
+
+      this.DIMENSIONS.bodyHeight = this.DIMENSIONS.pageEndBreakPoints[this.DIMENSIONS.pageEndBreakPoints.length -1];
 
       $('body').css({ 'height': this.DIMENSIONS.bodyHeight });
+    },
+
+    pageScroll: function(e){
+      // get page idx from breakpoint buckets
+      var breakpointRatio = this.model.get('breakpointRatio');
+      var newPageIdx = this.DIMENSIONS.pageEndBreakPoints.reduce(function(pageIdx, bp){
+        return pageYOffset < bp - (innerHeight * (1-breakpointRatio)) ? pageIdx : pageIdx +1;
+      }, 0);
+
+      if(newPageIdx === this.model.get('currentPage') + 1){
+        this.model.trigger('changePage', 'up', newPageIdx);
+      }else if(newPageIdx === this.model.get('currentPage') - 1){
+        this.model.trigger('changePage', 'down', newPageIdx);
+      }else if(newPageIdx !== this.model.get('currentPage')){
+        this.model.trigger('changePage', 'skip', newPageIdx);
+      }
+      
     },
 
     changePage: function(app){
@@ -90,22 +108,6 @@ haunt.Views = haunt.Views || {};
       }
     },
 
-    pageScroll: function(e){
-      // get the index of the breakpoint bucket that pageYOffset falls within
-      // var newPage = Math.max(0, Math.min(this.pageTemplates.length, Math.floor(pageYOffset / innerHeight)));
-      var offset = this.DIMENSIONS.bodyHeight / (this.pageTemplates.length + 3);
-      var newPage = Math.floor(pageYOffset / offset);
-      if(newPage !== this.model.get('currentPage')){
-        if(this.model.get('currentPage') > newPage){
-          this.model.trigger('pageDown', newPage);
-        }else if(this.model.get('currentPage') < newPage){
-          this.model.trigger('pageUp', newPage);
-        }else{
-          this.model.trigger('skipPage', newPage);
-        }
-      }
-    },
-
     render: function () {
       this.$el.html( this.template(this.model.toJSON()) );
       return this.$el;
@@ -118,6 +120,7 @@ haunt.Views = haunt.Views || {};
       _.extend(pageView, pageData);
 
       this.$el.find('.page-container').append(pageView.render());
+      return pageView;
     }
 
   });
