@@ -24,17 +24,8 @@ haunt.Models = haunt.Models || {};
           'navDirection': dir
         });
       });
-    },
-
-    defaults: {
-    },
-
-    validate: function(attrs, options) {
-    },
-
-    parse: function(response, options)  {
-      return response;
     }
+
   });
 
 })();

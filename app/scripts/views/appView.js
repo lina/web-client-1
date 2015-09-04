@@ -97,13 +97,7 @@ haunt.Views = haunt.Views || {};
 
     changePage: function(app){
       this.model.pages.each(function(page){
-        if(page.get('pageNumber') === this.get('currentPage')){
-          // if the new currentPage is in the background, where it's opacity is already 1,
-          // force it to fade in by resetting its opacity to 0 -- a bit of a hack
-          if( (this.get('navDirection') === 'down' && this._previousAttributes['navDirection'] === 'up') ||
-              (this.get('navDirection') === 'up' && this._previousAttributes['navDirection'] === 'down') ){
-            // page.trigger('');
-          }
+        if(page.get('pageNumber') === this.get('currentPage')){          
           page.trigger('show');
         }else if(page.get('pageNumber') === this._previousAttributes['currentPage']){
           page.trigger('send2background');

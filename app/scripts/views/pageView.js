@@ -20,23 +20,28 @@ haunt.Views = haunt.Views || {};
 
     show: function() {
       this.$el.css({
-        'opacity': 1,
         'zIndex': 2,
-      });
+        'opacity': 0
+      }).animate({
+        'opacity': 1
+      }, 200);
     },
 
     send2background: function() {
       this.$el.css({
-        'opacity': 1,
-        'zIndex': 1,
-      });
+        'zIndex': 1
+      }).animate({
+        'opacity': 1
+      }, 400);
     },
 
     hide: function() {
       this.$el.css({
-        'opacity': 0,
         'zIndex': 0,
-      });
+        'opacity': 0
+      }).animate({
+        'opacity': 0
+      }, 400);
     },
 
     render: function () {
