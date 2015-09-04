@@ -19,7 +19,7 @@ haunt.Views = haunt.Views || {};
     },
 
     show: function() {
-      this.$el.css({
+      this.$el.stop().css({
         'zIndex': 2,
         'opacity': 0
       }).animate({
@@ -28,7 +28,7 @@ haunt.Views = haunt.Views || {};
     },
 
     send2background: function() {
-      this.$el.css({
+      this.$el.stop().css({
         'zIndex': 1
       }).animate({
         'opacity': 1
@@ -36,7 +36,7 @@ haunt.Views = haunt.Views || {};
     },
 
     hide: function() {
-      this.$el.css({
+      this.$el.stop().css({
         'zIndex': 0,
         'opacity': 0
       }).animate({
