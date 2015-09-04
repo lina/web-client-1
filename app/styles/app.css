@@ -116,9 +116,6 @@ header {
   bottom: 0;
   z-index: 0;
   background-color: #FAFAFA;
-  background-image: url('../images/alberto-korda.jpg');
-  background-size: cover;
-  background-position: 50% 14%;
 }
 
 .page-container {
@@ -181,4 +178,13 @@ footer {
     margin-bottom: 0;
     opacity: 1;
   }
-  /*footer:hover li { opacity: 1; }*/
+
+
+/*******************/
+/* Pages */
+/*******************/
+.page.pageNumber-0 {
+  background-image: url('../images/alberto-korda.jpg');
+  background-size: cover;
+  background-position: 50% 14%;
+}

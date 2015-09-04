@@ -11,6 +11,10 @@ haunt.Views = haunt.Views || {};
 
     pageTemplates: [
       { 
+        template: JST['app/scripts/templates/pages/page0.ejs'],
+        backgroundColor: '#FFF'
+      },
+      { 
         template: JST['app/scripts/templates/pages/page1.ejs'],
         backgroundColor: '#80DBFF'
       },
@@ -53,6 +57,8 @@ haunt.Views = haunt.Views || {};
       $(window).on('scroll', _.throttle(this.pageScroll.bind(this), 30));
       this.listenTo(this.model, 'change:currentPage', this.changePage);
       
+      // simulate pageScroll to initialize first page
+      this.pageScroll();
     },
 
     calculateSize: function(){
@@ -114,7 +120,7 @@ haunt.Views = haunt.Views || {};
     },
 
     generatePage: function(pageData, idx){
-      var page = this.model.pages.add({ pageNumber: idx+1 }),
+      var page = this.model.pages.add({ pageNumber: idx }),
           pageView = new haunt.Views.Page({ model: page });
 
       _.extend(pageView, pageData);
