@@ -96,16 +96,23 @@ haunt.Views = haunt.Views || {};
     },
 
     changePage: function(app){
-      var pageNumber = app.get('currentPage');
       this.model.pages.each(function(page){
-        if(page.get('pageNumber') === pageNumber){
+        if(page.get('pageNumber') === this.get('currentPage')){
+          // if the new currentPage is in the background, where it's opacity is already 1,
+          // force it to fade in by resetting its opacity to 0 -- a bit of a hack
+          if( (this.get('navDirection') === 'down' && this._previousAttributes['navDirection'] === 'up') ||
+              (this.get('navDirection') === 'up' && this._previousAttributes['navDirection'] === 'down') ){
+            // page.trigger('');
+          }
           page.trigger('show');
+        }else if(page.get('pageNumber') === this._previousAttributes['currentPage']){
+          page.trigger('send2background');
         }else{
           page.trigger('hide');
         }
-      });
+      }.bind(this.model));
 
-      if(pageNumber > 0){
+      if(this.model.get('currentPage') > 0){
         this.model.trigger('showHeader');
         this.model.trigger('showFooter');
       }else{

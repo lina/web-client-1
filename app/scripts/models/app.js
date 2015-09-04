@@ -19,8 +19,10 @@ haunt.Models = haunt.Models || {};
       this.set('breakpointRatio', 0.5);
 
       this.on('changePage', function(dir, pageIdx){
-        this.set('currentPage', pageIdx);
-        console.log('page', dir, '.  new page:', pageIdx);
+        this.set({
+          'currentPage': pageIdx,
+          'navDirection': dir
+        });
       });
     },
 
