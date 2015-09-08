@@ -10,19 +10,22 @@ haunt.Models = haunt.Models || {};
     url: '',
 
     initialize: function() {
+      this.pages = new haunt.Collections.Pages();
       this.set('org', 'Adequate Design Studios');
-      this.set('user', 'Terence Mckenna')
-    },
+      this.set('user', 'Terence Mckenna');
 
-    defaults: {
-    },
+      // fraction of the window size to trigger page breakpoint
+        // 0: top; 0.5: middle; 1: bottom
+      this.set('breakpointRatio', 0.5);
 
-    validate: function(attrs, options) {
-    },
-
-    parse: function(response, options)  {
-      return response;
+      this.on('changePage', function(dir, pageIdx){
+        this.set({
+          'currentPage': pageIdx,
+          'navDirection': dir
+        });
+      });
     }
+
   });
 
 })();
